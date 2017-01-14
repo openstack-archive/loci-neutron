@@ -68,7 +68,6 @@ RUN set -x \
     && mkdir -p /usr/share/neutron/rootwrap \
     && chown -R root:root /etc/${PROJECT}/policy.json /etc/${PROJECT}/rootwrap.conf /etc/neutron/rootwrap.d /usr/share/neutron/rootwrap \
 # Setup Neutron RootWrap & sudo
-    && ln -s /virtualenv/bin/neutron-rootwrap-daemon /usr/bin/neutron-rootwrap-daemon \
     && chmod 0640 /etc/sudoers \
     && echo "neutron ALL = (root) NOPASSWD: /usr/bin/neutron-rootwrap-daemon" >> /etc/sudoers \
     && echo "Defaults!/usr/bin/neutron-rootwrap-daemon !requiretty" >> /etc/sudoers \
