@@ -7,16 +7,19 @@ ARG WHEELS
 ARG GIT_REPO=https://git.openstack.org/openstack/${PROJECT}
 ARG GIT_REF
 ARG GIT_REF_REPO=https://git.openstack.org/openstack/${PROJECT}
-ARG SCRIPTS=https://github.com/yaodu/common/archive/0.1.2.tar.gz
+ARG SCRIPTS_REPO=https://github.com/openstack/loci
+ARG SCRIPTS_REF=master
 ARG OVERRIDE=override
 
 ADD $OVERRIDE /
 
 RUN set -x \
-    && yum install --setopt=tsflags=nodocs -y python curl \
-    && curl -sSL $SCRIPTS | tar xz -C /tmp/ --strip-components=2 \
-    && /tmp/download.sh $DOCKER_REPO $DOCKER_TAG $WHEELS \
-    && /tmp/install.sh $PROJECT $GIT_REPO $GIT_REF_REPO $GIT_REF \
+    && yum install --setopt=tsflags=nodocs -y python curl git \
+    && git init /tmp/common/ \
+    && git --git-dir /tmp/common/.git fetch --depth 1 $SCRIPTS_REPO $SCRIPTS_REF \
+    && git --git-dir /tmp/common/.git/ checkout FETCH_HEAD  \
+    && /tmp/common/scripts/download.sh \
+    && /tmp/common/scripts/install.sh \
     && yum install --setopt=tsflags=nodocs -y  \
         bridge-utils \
         conntrack-tools \
@@ -27,4 +30,4 @@ RUN set -x \
         keepalived \
         openvswitch \
         uuid \
-    && /tmp/cleanup.sh
+    && /tmp/common/scripts/cleanup.sh
