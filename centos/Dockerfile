@@ -13,13 +13,7 @@ ARG OVERRIDE=override
 ADD $OVERRIDE /
 
 RUN set -x \
-    && yum install -y python curl git \
-    && git init /tmp/common/ \
-    && git --git-dir /tmp/common/.git fetch --depth 1 $SCRIPTS_REPO $SCRIPTS_REF \
-    && git --work-tree /tmp/common --git-dir /tmp/common/.git checkout FETCH_HEAD \
-    && /tmp/common/scripts/download.sh \
-    && /tmp/common/scripts/install.sh \
-    && yum install -y  \
+    && yum install -y git \
         bridge-utils \
         conntrack-tools \
         dnsmasq \
@@ -29,4 +23,9 @@ RUN set -x \
         keepalived \
         openvswitch \
         uuid \
+    && git init /tmp/common/ \
+    && git --git-dir /tmp/common/.git fetch --depth 1 $SCRIPTS_REPO $SCRIPTS_REF \
+    && git --work-tree /tmp/common --git-dir /tmp/common/.git checkout FETCH_HEAD \
+    && /tmp/common/scripts/download.sh \
+    && /tmp/common/scripts/install.sh \
     && /tmp/common/scripts/cleanup.sh

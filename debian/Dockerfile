@@ -14,13 +14,7 @@ ADD $OVERRIDE /
 
 RUN set -x \
     && apt-get update \
-    && apt-get install -y --no-install-recommends python ca-certificates curl git \
-    && git init /tmp/common/ \
-    && git --git-dir /tmp/common/.git fetch --depth 1 $SCRIPTS_REPO $SCRIPTS_REF \
-    && git --work-tree /tmp/common --git-dir /tmp/common/.git checkout FETCH_HEAD \
-    && /tmp/common/scripts/download.sh \
-    && /tmp/common/scripts/install.sh \
-    && apt-get install -y --no-install-recommends \
+    && apt-get install -y --no-install-recommends git \
         bridge-utils \
         conntrack \
         dnsmasq \
@@ -33,4 +27,9 @@ RUN set -x \
         keepalived \
         openvswitch-switch \
         uuid-runtime \
+    && git init /tmp/common/ \
+    && git --git-dir /tmp/common/.git fetch --depth 1 $SCRIPTS_REPO $SCRIPTS_REF \
+    && git --work-tree /tmp/common --git-dir /tmp/common/.git checkout FETCH_HEAD \
+    && /tmp/common/scripts/download.sh \
+    && /tmp/common/scripts/install.sh \
     && /tmp/common/scripts/cleanup.sh
