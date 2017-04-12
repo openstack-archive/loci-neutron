@@ -13,13 +13,13 @@ ARG OVERRIDE=override
 ADD $OVERRIDE /
 
 RUN set -x \
-    && yum install --setopt=tsflags=nodocs -y python curl git \
+    && yum install -y python curl git \
     && git init /tmp/common/ \
     && git --git-dir /tmp/common/.git fetch --depth 1 $SCRIPTS_REPO $SCRIPTS_REF \
     && git --work-tree /tmp/common --git-dir /tmp/common/.git checkout FETCH_HEAD \
     && /tmp/common/scripts/download.sh \
     && /tmp/common/scripts/install.sh \
-    && yum install --setopt=tsflags=nodocs -y  \
+    && yum install -y  \
         bridge-utils \
         conntrack-tools \
         dnsmasq \
