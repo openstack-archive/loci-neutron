@@ -14,7 +14,7 @@ ADD $OVERRIDE /
 
 RUN set -x \
     && apt-get update \
-    && apt-get install -y --no-install-recommends git \
+    && apt-get install -y --no-install-recommends git ca-certificates \
         bridge-utils \
         conntrack \
         dnsmasq \
