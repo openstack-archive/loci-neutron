@@ -11,6 +11,7 @@ ARG OVERRIDE=override
 ADD $OVERRIDE /
 
 RUN set -x \
+    && yum upgrade -y \
     && yum install -y git \
         bridge-utils \
         conntrack-tools \
