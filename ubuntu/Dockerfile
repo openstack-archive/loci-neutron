@@ -1,5 +1,6 @@
 FROM ubuntu:xenial
 
+ENV PATH=/var/lib/openstack/bin:$PATH
 ENV PROJECT=neutron
 ARG WHEELS=openstackloci/requirements:ubuntu
 ARG PROJECT_REPO=https://git.openstack.org/openstack/${PROJECT}
