@@ -1,0 +1,2 @@
+export PROJECT=neutron
+export DISTRO=centos
