@@ -25,7 +25,7 @@ RUN set -x \
         iptables \
         iputils-arping \
         keepalived \
-        openvswitch-switch \
+        libxml2 \
         uuid-runtime \
     && git init /tmp/common/ \
     && git --git-dir /tmp/common/.git fetch --depth 1 $SCRIPTS_REPO $SCRIPTS_REF \
