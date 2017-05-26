@@ -21,7 +21,7 @@ RUN set -x \
         ebtables \
         ipset \
         keepalived \
-        libxml2 \
+        openvswitch \
         uuid \
     && git init /tmp/common/ \
     && git --git-dir /tmp/common/.git fetch --depth 1 $SCRIPTS_REPO $SCRIPTS_REF \
