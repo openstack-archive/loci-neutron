@@ -21,6 +21,7 @@ RUN set -x \
         ebtables \
         ipset \
         keepalived \
+        libpython2.7 \
         openvswitch \
         uuid \
     && git init /tmp/common/ \

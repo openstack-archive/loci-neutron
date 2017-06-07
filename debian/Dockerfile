@@ -25,6 +25,7 @@ RUN set -x \
         iptables \
         iputils-arping \
         keepalived \
+        libpython2.7 \
         openvswitch-switch \
         uuid-runtime \
     && git init /tmp/common/ \
