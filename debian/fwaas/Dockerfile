@@ -1,4 +1,5 @@
-FROM openstackloci/neutron:debian
+ARG FROM=openstackloci/neutron:debian
+FROM ${FROM}
 
 ENV PROJECT=neutron-fwaas
 ARG WHEELS
