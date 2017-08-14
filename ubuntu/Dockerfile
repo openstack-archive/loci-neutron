@@ -27,6 +27,7 @@ RUN set -x \
         iputils-arping \
         keepalived \
         libpython2.7 \
+        libxml2 \
         openvswitch-switch \
         uuid-runtime \
     && git init /tmp/common/ \

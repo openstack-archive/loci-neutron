@@ -23,6 +23,7 @@ RUN set -x \
         ipset \
         keepalived \
         libpython2.7 \
+        libxml2 \
         openvswitch \
         uuid \
     && git init /tmp/common/ \
