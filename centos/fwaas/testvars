@@ -1,3 +1,0 @@
-export PROJECT=neutron
-export DISTRO=centos
-export PLUGIN=fwaas

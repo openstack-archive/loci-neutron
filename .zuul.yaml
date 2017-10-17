@@ -1,0 +1,8 @@
+- project:
+    name: openstack/loci-neutron
+    check:
+      jobs:
+        - noop
+    gate:
+      jobs:
+        - noop
